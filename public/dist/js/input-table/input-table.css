@@ -1,0 +1,53 @@
+table>thead>tr>.hasinput, table>tbody>tr>.hasinput, table>tfoot>tr>.hasinput {
+	padding: 0px 0px !important;
+	/* vertical-align: middle; */
+	display: table-cell !important;
+}
+
+table>thead>tr>.hasinput.hidden, table>tbody>tr>.hasinput.hidden, table>tfoot>tr>.hasinput.hidden {
+	display: none !important;
+}
+
+table>thead>tr>.hasinput button, table>tbody>tr>.hasinput button, table>tfoot>tr>.hasinput button {
+	text-align: right;
+	border-radius : 0px;
+	vertical-align: middle;
+}
+
+.hasinput input, .hasinput select {
+	border: unset !important;
+	margin: 0px;
+	padding-right: 0px;
+	width: 100%;
+}
+
+.hasinput.text-v-center {
+	vertical-align: middle;
+}
+
+td.hasinput input:disabled:focus {
+	border: unset;
+}
+
+td.hasinput input:focus {
+	border-bottom: 1px solid #3276b1 !important;
+}
+
+.hasinput label.error {
+	position: fixed;
+	margin-top: -20px;
+	background: black;
+	color: #ffe9ac;
+	padding: 5px;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	z-index: 1000;
+}
+
+.hasinput .error:after {
+	top: 100%;
+	right: 11px;
+	border-top: 4px solid rgba(0, 0, 0, .9);
+	border-right: 4px solid black;
+	border-left: 4px solid black
+}

@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../dist/fonts/Roboto/Roboto-Regular.ttf')') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Thin';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-Bold.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Black';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-Black.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Light';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-Light.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Medium';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-Medium.ttf');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-Regular.ttf');
+}
+
+/** Italic Roboto*/
+
+@font-face {
+  font-family: 'Roboto-Italic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../dist/fonts/Roboto/Roboto-RegularItalic.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Thin-Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-ThinItalic.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Bold-Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-BoldItalic.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Black-Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-BlackItalic.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Light-Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-LightItalic.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Medium-Italic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/Roboto/Roboto-MediumItalic.ttf');
+}
+
+.roboto{
+	font-family: 'Roboto';
+}
+.roboto-thin{
+	font-family: 'Roboto-Thin';
+}
+
+.roboto-bold{
+	font-family: 'Roboto-Bold';
+}
+.roboto-black{
+	font-family: 'Roboto-Black';
+}
+.roboto-light{
+	font-family: 'Roboto-Light';
+}
+.roboto-medium{
+	font-family: 'Roboto-Medium';
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+.underline{
+	text-decoration: underline;
+}
