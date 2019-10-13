@@ -1,0 +1,24 @@
+<%- 
+include('./partials/header-admin', {
+    title : 'Danh sách bánh', 
+    other : '<a href="'+process.env.HOST+'admin/cake" class="btn btn-lg btn-success notika-btn-success btn-icon-notika waves-effect"><i class="notika-icon notika-app"></i> Thêm bánh mới</a>',
+    icon : 'fal fa-list'
+});
+%>
+
+<div class="container">
+    <div class="row">
+    <% listCake.forEach((cake)=>{ %>
+        <%- include('./item/cake', {'cake' : cake, 'isAdmin' : true}); %>
+    <% }); %>
+    </div>
+</div>
+<% include partials/footer-admin %>
+
+<script>
+$('.cake-price').each(function(){
+    let text = numeral($(this).text()).format('0,0') + 'đ';
+    $(this).text(text);
+})
+
+</script>

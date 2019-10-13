@@ -2,9 +2,34 @@
 
 <head>
 <% include ./partials/head %>
+<title>Home</title>
 </head>
 <body>
-<% include ./partials/header %>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <ul class="nav nav-tabs" style="width:100%">
+                    <li class="active"><a href="#menu" class="uppercase">Thực đơn</a></li>
+                    <li class=""><a href="#department" class="uppercase">Phòng</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="menu" class="tab-pane fade in active">
+                        <div class="pane_filter padding-10">
+                            <% category.forEach(function(item){ %>
+                                <button class='btn btn-default'><%=item %></button>
+                           <% }); %>
+                        </div>
+                        <div class="pane_cake">
+                            
+
+                        </div>
+                    </div>
+                    <div id="department" class="tab-pane"></div>
+                </div>
+            </div>
+            <div class="col-xs-6"></div>
+        </div>
+    </div>
     
 <% include ./partials/footer %>
 </body>

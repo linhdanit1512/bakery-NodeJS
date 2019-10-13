@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="<%=process.env.HOST%>dist/bootstrap4/css/bootstrap.min.css"> -->
+  <!-- Bootstrap CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>dist/fontawesome-pro/css/all.css">
+  <!-- owl.carousel CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/owl.carousel.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/owl.theme.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/owl.transitions.css">
+  <!-- meanmenu CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/meanmenu/meanmenu.min.css">
+  <!-- animate CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/animate.css">
+  <!-- normalize CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/normalize.css">
+  <!-- mCustomScrollbar CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/scrollbar/jquery.mCustomScrollbar.min.css">
+  <!-- jvectormap CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/jvectormap/jquery-jvectormap-2.0.3.css">
+  <!-- notika icon CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/notika-custom-icon.css">
+  <!-- wave CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/wave/waves.min.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/wave/button.css">
+
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/notification/notification.css">
+  <!-- main CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/main.css">
+  <!-- style CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/style.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>theme/css/responsive.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>dist/css/style.css">
+  <link rel="stylesheet" href="<%=process.env.HOST%>dist/css/my-responsive.css">
+  <!-- responsive CSS
+		============================================ -->
+  <link rel="stylesheet" href="<%=process.env.HOST%>dist/css/admin.css">
+  <link rel="icon" href="<%=process.env.HOST%>img/favicon/favicon.ico" type="image/x-icon" />
+  <!-- modernizr JS
+		============================================ -->
+  <!--    <script src="<%=process.env.HOST%>theme/js/vendor/modernizr-2.8.3.min.js"></script>-->
+</head>
+
+<body>
+  <header class="header-top-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="logo-area">
+            <a href="#"><img src="<%=process.env.HOST%>img/favicon/logo.png" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+          <div class="header-top-menu">
+            <ul class="nav navbar-nav notika-top-nav">
+              <li class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                  class="nav-link dropdown-toggle"><span><i class="notika-icon notika-search"></i></span></a>
+                <div role="menu" class="dropdown-menu search-dd">
+                  <div class="search-input">
+                    <i class="notika-icon notika-left-arrow"></i>
+                    <input type="text" placeholder="Tìm kiếm" autocomplete="false" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2">
+          <div class="mobile-menu">
+            <nav id="dropdown">
+              <ul class="mobile-menu-nav nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                <li><a href="<%=process.env.HOST%>manage" data-toggle="tooltip" data-placement="bottom" title=""
+                    data-original-title="Thống kê"><i class="notika-icon notika-bar-chart" style="font-size: 30px;"></i>
+                    <span class="hidden-sm hidden-xs">Thống kê</span></a></li>
+                <li><a href="<%=process.env.HOST%>manage/user" data-toggle="tooltip" data-placement="bottom" title=""
+                    data-original-title="Nhân viên"><i class="notika-icon notika-support" style="font-size: 30px;"></i>
+                    <span class="hidden-sm hidden-xs"> Nhân viên</span></a> </li>
+                <li><a href="<%=process.env.HOST%>manage/ingredient" data-toggle="tooltip" data-placement="bottom"
+                    title="" data-original-title="Nguyên liệu"><i class="notika-icon notika-form"
+                      style="font-size: 30px;"></i> <span class="hidden-sm hidden-xs">Nguyên liệu</span></a></li>
+                <li><a href="<%=process.env.HOST%>manage/cake/sell" data-toggle="tooltip" data-placement="bottom"
+                    title="" data-original-title="Bán bánh"><i class="fal fa-database"
+                      style="font-size: 28px;"></i> <span class="hidden-sm hidden-xs">Bán
+                      bánh</span></a></li>
+                <li><a href="<%=process.env.HOST%>manage/cake/make" data-toggle="tooltip" data-placement="bottom"
+                    title="" data-original-title="Làm bánh"><i class="fa fa-blender" style="font-size: 26px;"></i><span
+                      class="hidden-sm hidden-xs">Làm bánh</span></a></li>
+                <li class=""><a data-toggle="dropdown" href="#_list" data-toggle="tooltip" data-placement="bottom"
+                    title="" data-original-title=" Danh sách"><i class="fal fa-align-justify"
+                      style="font-size: 26px;"></i><span class="hidden-sm hidden-xs">Danh sách</span></a>
+                  <ul class="dropdown-menu">
+                    <li class=""><a href="<%=process.env.HOST%>admin/cakes"><span class="hidden-sm hidden-xs"></span>Các
+                        loại bánh</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="breadcomb-list">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
+          <div class="breadcomb-wp">
+            <div class="breadcomb-icon">
+              <i class="<%- locals.icon ? locals.icon : 'notika-icon notika-edit' %>"></i>
+            </div>
+            <div class="breadcomb-ctn">
+              <h2 style="font-size: xx-large;"><b><%- locals.title ? locals.title : '' %></b></h2>
+              <p style="font-size: x-large;"><%- locals.under_title ? locals.under_title : '' %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 order-last">
+          <div class="pull-right">
+            <%- locals.other ? locals.other : '' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

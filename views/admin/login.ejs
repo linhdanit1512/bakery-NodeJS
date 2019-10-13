@@ -1,0 +1,96 @@
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="<%=process.env.HOST%>dist/bootstrap4/css/bootstrap.min.css"> -->
+<!-- Bootstrap CSS
+              ============================================ -->
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/animate.css">
+<!-- normalize CSS
+              ============================================ -->
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/normalize.css">
+<!-- mCustomScrollbar CSS
+              ============================================ -->
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/notika-custom-icon.css">
+<!-- wave CSS
+              ============================================ -->
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/wave/waves.min.css">
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/wave/button.css">
+
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/main.css">
+<!-- style CSS
+              ============================================ -->
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/style.css">
+<link rel="stylesheet" href="<%=process.env.HOST%>theme/css/responsive.css">
+<!-- responsive CSS
+              ============================================ -->
+<link rel="icon" href="<%=process.env.HOST%>img/favicon/favicon.ico" type="image/x-icon" />
+<style>
+    .login-control {
+        margin-top: 20px;
+    }
+    .login-control .btn{
+        border-radius: 16px;
+        background-color: rgb(113, 206, 175, 0.7);
+        box-shadow: unset;
+        border: 1px solid;
+    }
+    .login-control .btn:hover{
+        border: 1px solid;
+        background-color: rgb(113, 206, 175, 0.3);
+    }
+</style>
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Login Register area Start-->
+    <div class="login-content">
+        <!-- Login -->
+        <div class="nk-block toggled" id="l-login">
+            <div class="nk-form">
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
+                    <div class="nk-int-st">
+                        <input type="text" class="form-control" placeholder="Tên đăng nhập hoặc email">
+                    </div>
+                </div>
+                <div class="input-group mg-t-15">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
+                    <div class="nk-int-st">
+                        <input type="password" class="form-control" placeholder="Mật khẩu">
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-control">
+                <a href="#" class="btn btn-success notika-btn-success" data-ma-action="nk-login-switch" data-ma-block="#l-forget-password"> <span>Quên mật khẩu?</span></a>
+                <a href="#" class="btn btn-success notika-btn-success"> <span>Đăng nhập</span></a>
+            </div>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="nk-block" id="l-forget-password">
+            <div class="nk-form">
+                <p class="text-left"></p>
+
+                <div class="input-group">
+                    <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-mail"></i></span>
+                    <div class="nk-int-st">
+                        <input type="text" class="form-control" placeholder="Tên đăng nhập hoặc Email">
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-control">
+                <a href="#" class="btn btn-success notika-btn-success" data-ma-action="nk-login-switch" data-ma-block="#l-login"> <span>Đăng nhập</span></a>
+            </div>
+        </div>
+    </div>
+    <% include partials/footer-admin %>
+    <script src="<%=process.env.HOST%>theme/js/login/login-action.js"></script>
+</body>
+
+</html>

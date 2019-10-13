@@ -1,0 +1,57 @@
+.form-submit {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    height: inherit;
+    right: 0px;
+}
+
+.form-submit .btn {
+    border-radius: 0px;
+    padding: 20px 30px;
+    min-width: 150px;
+    font-size: 20px;
+    float: right;
+    border: unset;
+}
+
+ul.dropdown-menu>li>a {
+    padding: 10px 20px;
+}
+
+ul.dropdown-menu>li>a:hover, ul.dropdown-menu>li>a:focus, ul.dropdown-menu>li.active>a {
+    background: #00c292;
+}
+
+.custom-bg-attr {
+    border-radius: 8px;
+    bottom: 16px;
+    color: white;
+    font-weight: 500;
+    left: 16px;
+    max-width: 80%;
+    padding: 8px 8px 8px 8px;
+    position: fixed;
+    text-shadow: 0 0 16px rgba(0, 0, 0, .3);
+    z-index: -1;
+    cursor: pointer;
+}
+
+.custom-bg-attr:hover{
+    background: rgba(var(--GG900-rgb), .1);
+}
+
+/**--------------CAKE---------------------- */
+.cake-item {
+    padding: 3px;
+    border: 1px solid #00c292;
+    margin: 5px;
+    background: white;
+}
+
+.cake-item img {
+    width: 100%;
+    overflow: hidden;
+}
+
+/**----END CAKE */

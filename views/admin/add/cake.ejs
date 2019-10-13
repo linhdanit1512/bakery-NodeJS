@@ -1,0 +1,82 @@
+<%- include('./partials/header-admin', {
+    title : 'Thêm bánh mới',
+    under_title : '<i id="cake-slug">&nbsp;</i>'
+}); %>
+
+<div class="container">
+    <div>
+        <form class="form" id="cakeForm" action="" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_id">
+            <input type="hidden" name="slug">
+            <div class="col-md-8 col-xs-12">
+                <div class="col col-lg-6 col-md-6 col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <input name="name" class="form-control" placeholder="Tên bánh" required>
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <input type="file" name="img" form="image-form" accept="image/*" data-image="preview"
+                        data-target="#previewCake" class="form-control" placeholder="Hình ảnh">
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <textarea name="description" rows="6" class="form-control" placeholder="Giới thiệu bánh"></textarea>
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <input type="number" name="expiry_date" class="form-control" placeholder="Hạn sử dụng (ngày)"
+                        required>
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <input name="price" class="form-control input-currency" placeholder="Giá bán" required>
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <input name="cake_type" class="form-control" placeholder="Loại bánh">
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12"><canvas id="previewCakeCanvas"></canvas><img id="previewCake"></div>
+            <div class="clearfix"></div>
+            <div class="form-submits pull-right">
+                <button class="btn btn-success notika-btn-success btnSubmitCake" type="button">Thêm</button>
+                <button class="btn btn-default" type="reset">Nhập lại</button>
+                <button class="btn btn-default" type="button">Hủy</button>
+            </div>
+        </form>
+        <form id="image-form"></form>
+    </div>
+</div>
+<% include partials/footer-admin %>
+<script>
+    localStorage.setItem('aspectRatio', 4 / 3);
+    $('[name=name]').change(function () {
+        var _slug = slug(this.value);
+        var lasted_slug = Math.floor(Math.random() * 1e9);
+        $('[name=slug]').val(_slug + '-' + lasted_slug);
+        $('#cake-slug').text('/' + _slug);
+    });
+
+    $('.btnSubmitCake').click(function () {
+
+        // Get form
+        var form = $('#cakeForm')[0];
+
+        // Create an FormData object 
+        var data = new FormData(form);
+        $.ajax({
+            url: '<%=process.env.HOST%>admin/cake',
+            type: 'post',
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            dataType: 'json',
+            data: data,
+            success: function (res) {
+                if (res.error) {
+                    notifyCustomer('Đã có lỗi xảy ra, vui lòng thực hiện lại', false);
+                } else {
+                    $('#cakeForm')[0].reset();
+                    notifyCustomer('Đã thêm bánh thành công', true);
+                }
+            },
+            error: function (e) {
+                notifyCustomer('Đã có lỗi xảy ra, vui lòng thực hiện lại', false);
+            }
+        });
+    })
+</script>

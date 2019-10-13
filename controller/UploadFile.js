@@ -1,6 +1,6 @@
 require('dotenv').config();
 const randomstring = require('randomstring'),
-    fs = require(fs);
+    fs = require('fs');
 
 getImageName = (id) => {
     let date = new Date();
@@ -8,7 +8,7 @@ getImageName = (id) => {
     return s + '_' + id + '.png';
 }
 
-function UploadFile(img, path, callback) {
+module.exports = exports = function(img, path, callback) {
     if (img) {
         if (typeof img == 'string' && img != '') {
             if (img.indexOf('data:image') >= 0) {
@@ -30,6 +30,4 @@ function UploadFile(img, path, callback) {
             callback(null);
         }
     }
-}
-
-module.exports = UploadFile;
+};

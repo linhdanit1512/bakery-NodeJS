@@ -25,6 +25,14 @@ footer {
 	padding: 10px;
 }
 
+.padding-5 {
+	padding: 5px;
+}
+
+.uppercase{
+	text-transform: uppercase;
+}
+
 .fix-height {
 	height: 100%;
 	width: auto;
@@ -150,8 +158,10 @@ footer {
 	border-radius: 0px;
 }
 
-.form-control:focus {
+.form-control:focus, .form-control:hover {
 	-webkit-box-shadow: unset;
+	box-shadow: unset;
+	border-color: #499ddc;
 }
 
 .form-control+p.help {
@@ -249,4 +259,10 @@ input[type="radio"]:checked+label:after {
 
 .text-right {
 	text-align: right;
+}
+
+/*COLOR*/
+
+.bg-color-white{
+	background: white;
 }

@@ -1,0 +1,17 @@
+<div class="padding-5 col10-2 col-md-3 col-sm-4 col-xs-6 item-root">
+    <div class="cake-item">
+        <a class="img-cake-item" href="<%= process.env.HOST+ 'admin/cake/'+ cake.slug %>">
+            <img src="<%= process.env.HOST+ 'img/cake/'+ cake.img %>" alt="Cake Image" style="width:100%">
+            <figcaption><%= cake.name %></figcaption>
+            <div class="text-warning cake-price"><%= ""+cake.price %></div>
+            <% if(isAdmin==true){ %>
+            <div class="cake-control button-icon-btn button-icon-btn-rd">
+                <a class="btn btn-default btn-icon-notika waves-effect"
+                    href="<%= process.env.HOST+ 'admin/cake/'+ cake.slug %>"><i class="notika-icon notika-edit"></i></a>
+                <a class="btn btn-orange orange-icon-notika btn-icon-notika waves-effect" data-delete="true"
+                    data-object="cake" data-id="<%= cake._id %>"><i class="notika-icon notika-close"></i></a>
+            </div>
+            <% } %>
+        </div>
+    </a>
+</div>

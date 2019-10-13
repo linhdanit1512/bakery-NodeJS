@@ -1,0 +1,63 @@
+<div class="modal fade" id="modalAlert" role="dialog" style="display: none;">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+			</div>
+			<div class="modal-body">
+				<h2>Thông báo</h2>
+				<p class="notification_content"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modalMessage" role="dialog" style="display: none;">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+			</div>
+			<div class="modal-body">
+				<h2>Thông báo</h2>
+				<p class="message_content"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer style="bottom: 16px;" class="footer">
+	<div>
+
+		<div class="bold col-xs-4">
+			<i class="fal fa-2x fa-phone text-primary"></i> <span id="phone">0375 839 222</span>
+		</div>
+		<div class="bold col-xs-8 text-right">
+			<address><i class="fal fa-2x fa-map-marker-alt text-danger"></i> Tiệm bánh Thiên Ân - LXSV Gò Vấp 380/41 Phạm Văn Chiêu,
+			Phường 9, Quận Gò Vấp, TP. HCM</address>
+		</div>
+	</div>
+
+</footer>
+
+<script>
+	const host = "<%=process.env.HOST%>";
+</script>
+<script src="<%=process.env.HOST%>theme/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- bootstrap JS
+		============================================ -->
+<script src="<%=process.env.HOST%>theme/js/bootstrap.min.js"></script>
+<script src="<%=process.env.HOST%>theme/js/notification/bootstrap-growl.min.js"></script>
+<script src="<%=process.env.HOST%>theme/js/notification/notification-active.js"></script>
+<!-- wow JS
+		============================================ -->
+<script src="<%=process.env.HOST%>theme/js/wow.min.js"></script>
+<script src="<%=process.env.HOST%>theme/js/owl.carousel.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script src="<%=process.env.HOST%>dist/js/admin.js"></script>

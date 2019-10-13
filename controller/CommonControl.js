@@ -1,5 +1,5 @@
 function CommonControl(object) {
-    this = require('../model/' + object);
+    require('../model/' + object);
 }
 
 CommonControl.prototype = {

@@ -4,7 +4,8 @@ const express = require('express'),
 var userRouter = express.Router();
 
 userRouter.get('/', deauthenticated, function (req, res) {
-    res.render('u/home.ejs', { 'req': req, 'res': res });
+    var category = ["Bánh ngọt", "Bánh mặn", "Bánh kem", "Bánh quy"];
+    res.render('u/home.ejs', { 'req': req, 'res': res, category : category });
 });
 
 userRouter.get('/login', deauthenticated, function(req, res){
@@ -30,6 +31,15 @@ userRouter.get('/invoice', authenticated, function(req, res){
 userRouter.get('/invoice/:id', authenticated, function(req, res){
     let id= req.params.id;
     res.render('u/invoice.ejs', { 'req': req, 'res': res, 'alertmessage' : req.flash('alertmessage') });
+});
+
+userRouter.get('/cake', deauthenticated, function(req, res){
+    res.render('u/cake.ejs', { 'req': req, 'res': res });
+});
+
+userRouter.get('/cake/:slug', deauthenticated, function(req, res){
+    var slug = req.params.slug;
+    res.render('u/cake-detail.ejs', { 'req': req, 'res': res, 'alertmessage' : req.flash('alertmessage') });
 });
 
 module.exports = exports = userRouter;

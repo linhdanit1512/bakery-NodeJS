@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 require('mongoose-double')(mongoose);
 var conn = require('../util/config').database;
 
-var schemaUser = new mongoose.Schema({
+var schemaStatistic = new mongoose.Schema({
     title : {type :String},
     date : {type : Date, default: Date.now()},
     total_revenue: {type : mongoose.Schema.Types.Double, min:0, default:0},
@@ -20,5 +20,5 @@ var schemaUser = new mongoose.Schema({
 
 schemaCake.virtual('details', { ref: 'Cake', localField: 'detail.cakeID', foreignField: '_id', justOne: false });
 
-var User = conn.model('User', schemaUser, 'User');
-module.exports = exports = User;
+var Statistic = conn.model('Statistic', schemaStatistic, 'Statistic');
+module.exports = exports = Statistic;
