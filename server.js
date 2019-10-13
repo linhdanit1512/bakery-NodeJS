@@ -8,7 +8,7 @@ var express = require('express'),
     path = require('path'),
     app = express(),
     server = require('http').createServer(app),
-    port = process.env.SERVER_PORT || 3000;
+    port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({ secret: process.env.PRIVATE_KEY, resave: true, saveUninitialized: true, cookie: { maxAge: 1000 * 60 * 300 } }));
