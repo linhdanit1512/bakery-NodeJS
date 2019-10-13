@@ -7,7 +7,8 @@ var express = require('express'),
     flash = require('connect-flash'),
     path = require('path'),
     app = express(),
-    server = require('http').createServer(app),
+    http = require('http'),
+    server = http.createServer(app),
     port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '/public')));
@@ -27,4 +28,5 @@ app.use('/' + process.env.ADMIN_URL, adminRoute);
 
 server.listen(port, function () {
     console.log(`Waiting statement at port ${port}...`);
+    console.log(process.env);
 });
