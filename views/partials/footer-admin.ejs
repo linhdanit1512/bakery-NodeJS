@@ -32,32 +32,36 @@
 	</div>
 </div>
 
-<footer style="bottom: 16px;" class="footer">
-	<div>
-
-		<div class="bold col-xs-4">
-			<i class="fal fa-2x fa-phone text-primary"></i> <span id="phone">0375 839 222</span>
+<footer class="footer text-white">
+	<div class="container">
+		<div class="bold col-md-3 col-xs-12">
+			<i class="fa-2x notika-icon notika-phone"></i> <span id="phone" data-toggle="tooltip" data-placement="top" title=""
+			data-original-title="Gọi tới chúng tôi" class="padding-5 pointer" style="margin-top: -10px; font-size: 1.3em;">097 793 38 07</span>
 		</div>
-		<div class="bold col-xs-8 text-right">
-			<address><i class="fal fa-2x fa-map-marker-alt text-danger"></i> Tiệm bánh Thiên Ân - LXSV Gò Vấp 380/41 Phạm Văn Chiêu,
-			Phường 9, Quận Gò Vấp, TP. HCM</address>
+		<div class="bold col-md-9 col-xs-12 text-right">
+			<address>
+				<i class="fa-2x notika-icon notika-map"></i><span class="padding-5" style="margin-top: -10px;	font-size: 1.3em;"> <span id="bakery_name">Tiệm bánh Thiên Ân - LXSV Gò Vấp</span>
+				<br> <span id="bakery_address">380/41	Phạm Văn Chiêu,Phường 9, Quận Gò Vấp, TP. HCM</span></span>
+			</address>
 		</div>
 	</div>
-
 </footer>
 
-<script>
-	const host = "<%=process.env.HOST%>";
-</script>
 <script src="<%=process.env.HOST%>theme/js/vendor/jquery-1.12.4.min.js"></script>
 <!-- bootstrap JS
-		============================================ -->
+	============================================ -->
 <script src="<%=process.env.HOST%>theme/js/bootstrap.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/notification/bootstrap-growl.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/notification/notification-active.js"></script>
 <!-- wow JS
-		============================================ -->
+	============================================ -->
 <script src="<%=process.env.HOST%>theme/js/wow.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/owl.carousel.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script>
+	const host = "<%=process.env.HOST%>";
+	$('#phone').click(function(){
+		window.location.href = 'tel:+84'+numeral(this.innerHTML ).value();
+	});
+</script>
 <script src="<%=process.env.HOST%>dist/js/admin.js"></script>

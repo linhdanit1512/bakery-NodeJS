@@ -1634,11 +1634,8 @@ ul.wizard-nav-ac li .disabled{
 	text-align:right;
 }
 .modal-ft .btn-modal, .modals-default-cl .btn-info, .modal-sm .modal-footer .btn-default, .modal-large .modal-footer .btn-default, .modals-default .modal-footer .btn-default{
-	background:#00c292;
 	outline:none;
-	color:#fff;
 	border-radius:3px;
-	border:none;
 }
 .modals-default-cl .btn-info{
 	margin-right:10px;
@@ -1650,9 +1647,7 @@ ul.wizard-nav-ac li .disabled{
 	margin-left:10px;
 }
 .modal-ft .btn-modal:focus, .modal-ft .btn-modal:active, .modal-ft .btn-modal:hover, .modals-default-cl .btn-info:focus, .modals-default-cl .btn-info:active, .modals-default-cl .btn-info:hover, .modals-default .modal-footer .btn-default:focus, .modals-default .modal-footer .btn-default:active, .modals-default .modal-footer .btn-default:hover, .modal-sm .modal-footer .btn-default:focus, .modal-sm .modal-footer .btn-default:active, .modal-sm .modal-footer .btn-default:hover, .modal-large .modal-footer .btn-default:focus, .modal-large .modal-footer .btn-default:active, .modal-large .modal-footer .btn-default:hover{
-	background:#00c292;
 	outline:none;
-	color:#fff;
 	box-shadow:none;
 }
 .modals-default .close, .modal-sm .close, .modal-large .close{

@@ -1,28 +1,49 @@
 $(function () {
+    window.canvas = {}
     $('input[data-image="preview"]').change(function () {
         let target_id = $(this).data('target');
-        let target = $(target_id);
-        let canvas = $(target_id + 'Canvas');
-        let context = canvas.get(0).getContext("2d");
+        let target = $('#'+target_id);
+        $('#'+target_id+'_no_image').hide();
+        window.canvas[target_id] = $('$'+target_id+ '_canvas');
         if (this.files && this.files[0]) {
             if (this.files[0].type.match(/^image\//)) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    let img = new Image();
-                    img.onload = function () {
-                        context.canvas.height = img.height;
-                        context.canvas.width = img.width;
-                        context.drawImage(img, 0, 0);
-                        var cropper = canvas.cropper({
-                            aspectRatio: numeral(localStorage.getItem('aspectRatio')).value()
-                        });
-                    }
-                    img.src = e.target.result;
                     target.attr('src', e.target.result);
                 }
                 reader.readAsDataURL(this.files[0]);
             }
         }
+    });
+
+    $('input[data-image="preview"]').each(function(){
+        let target_id = $(this).data('target');
+        $(this).after(`<span type="button" class="btn btn-default input-group-addon btnCropPopover" data-toggle="modal" data-target="#${target_id}_modal">Cắt ảnh</span>
+        <div class="modal fade in" id="${target_id}_modal" role="dialog" style="display: none; padding-right: 16px;">
+            <div class="modal-dialog modal-large">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Cắt ảnh</h2>
+                        <div id="${target_id}_no_image">Chưa chọn hình</div>
+                        <canvas id="${target_id}_canvas"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cắt</button>
+                        <button type="button" class="btn btn-default bg-white" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `);
+        $(this).parent().addClass('input-group').css({padding: '0px 15px', 'margin-bottom': '15px'});
+    });
+
+    $(document).unbind('click', '.btnCropPopover').on('click', '.btnPreviewPopover', function(){
+        let target_id = $(this).data('pop');
+        $(`.popover[data-pop="${target_id}"]`).show();
     });
 
     let objectDisplay = {

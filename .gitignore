@@ -2,4 +2,3 @@ node_modules/*
 public/dist/js/plugins/*
 .gitignore
 .env
-

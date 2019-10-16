@@ -1,3 +1,17 @@
+.page-body{
+    min-height: 333px;
+}
+
+footer.footer{
+    background: #00c292;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5em 1em;
+    height: fit-content;
+    margin-top:20px;
+}
+
 .form-submit {
     display: block;
     position: fixed;
@@ -39,6 +53,10 @@ ul.dropdown-menu>li>a:hover, ul.dropdown-menu>li>a:focus, ul.dropdown-menu>li.ac
 
 .custom-bg-attr:hover{
     background: rgba(var(--GG900-rgb), .1);
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 /**--------------CAKE---------------------- */

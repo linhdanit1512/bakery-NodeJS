@@ -27,4 +27,5 @@ app.use('/', userRoute);
 app.use('/' + process.env.ADMIN_URL, adminRoute);
 
 server.listen(port, function () {
+    console.log(`Waiting statement at port ${port}...`);
 });

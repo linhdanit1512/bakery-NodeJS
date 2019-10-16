@@ -3,7 +3,7 @@
     under_title : '<i id="cake-slug">&nbsp;</i>'
 }); %>
 
-<div class="container">
+<div class="container page-body">
     <div>
         <form class="form" id="cakeForm" action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_id">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <input type="file" name="img" form="image-form" accept="image/*" data-image="preview"
-                        data-target="#previewCake" class="form-control" placeholder="Hình ảnh">
+                        data-target="previewCake" class="form-control" placeholder="Hình ảnh">
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <textarea name="description" rows="6" class="form-control" placeholder="Giới thiệu bánh"></textarea>
@@ -30,8 +30,8 @@
                     <input name="cake_type" class="form-control" placeholder="Loại bánh">
                 </div>
             </div>
-            <div class="col-md-4 col-xs-12"><canvas id="previewCakeCanvas"></canvas><img id="previewCake"></div>
-            <div class="clearfix"></div>
+            <div class="col-md-4 col-xs-12" style="padding: 0px;"><img id="previewCake"></div>
+            <div class="clearfix padding-10"></div>
             <div class="form-submits pull-right">
                 <button class="btn btn-success notika-btn-success btnSubmitCake" type="button">Thêm</button>
                 <button class="btn btn-default" type="reset">Nhập lại</button>
