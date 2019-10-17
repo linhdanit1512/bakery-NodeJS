@@ -53,6 +53,9 @@
 <script src="<%=process.env.HOST%>theme/js/bootstrap.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/notification/bootstrap-growl.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/notification/notification-active.js"></script>
+<!-- Image crop -->
+<script src="<%=process.env.HOST%>dist/plugins/jcrop/jquery.color.min.js"></script>
+<script src="<%=process.env.HOST%>dist/plugins/jcrop/jquery.jCrop.min.js"></script>
 <!-- wow JS
 	============================================ -->
 <script src="<%=process.env.HOST%>theme/js/wow.min.js"></script>
@@ -64,4 +67,4 @@
 		window.location.href = 'tel:+84'+numeral(this.innerHTML ).value();
 	});
 </script>
-<script src="<%=process.env.HOST%>dist/js/admin.js"></script>
+<script type="module" src="<%=process.env.HOST%>dist/js/admin.js"></script>

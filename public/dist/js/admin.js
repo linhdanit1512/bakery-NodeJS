@@ -1,10 +1,14 @@
+import Cropper from '../cropperjs';
 $(function () {
-    window.canvas = {}
+    window._cropper = {}
     $('input[data-image="preview"]').change(function () {
         let target_id = $(this).data('target');
         let target = $('#'+target_id);
         $('#'+target_id+'_no_image').hide();
-        window.canvas[target_id] = $('$'+target_id+ '_canvas');
+        window._cropper[target_id] = new Cropper(document.getElementById(target_id),
+        {
+            aspectRatio : getItem('aspectRatio')
+        });
         if (this.files && this.files[0]) {
             if (this.files[0].type.match(/^image\//)) {
                 var reader = new FileReader();
@@ -127,6 +131,18 @@ function slug(string) {
             sb += c;
     })
     return sb.toString();
+}
+
+var setItem = function(key, value){
+    localStorage.setItem(btoa(key), btoa(value));
+}
+
+var getItem = function(key){
+    if(localStorage.getItem(btoa(key))){
+        return atob(localStorage.getItem(btoa(key)))
+    }else{
+        return null;
+    }
 }
 
 /**
