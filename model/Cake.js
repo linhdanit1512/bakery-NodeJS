@@ -6,12 +6,12 @@ var conn = require('../util/config').database;
 
 var schemaCake = new mongoose.Schema({
     name: { type: String, require: true },
-    img: { type: String, default: '/img/product/no-image.png' },
+    img: { type: String, default: 'no-image.png' },
     description: { type: String, maxlength: 2000 },
     price: { type: mongoose.Schema.Types.Double, default: 0, min: 0 },
     expiry_date: { type: Number, min: 1, default: 1 },
     slug: { type: String },
-    cake_type: {type : String},
+    cake_type: {type : [String]},
     status: { type: String, default: 'Valid' },//Valid, Stop, Sold, Expired
 }, { toJSON: { virtuals: true } });
 

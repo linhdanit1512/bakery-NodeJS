@@ -1,51 +1,65 @@
-import Cropper from '../cropperjs';
 $(function () {
     window._cropper = {}
     $('input[data-image="preview"]').change(function () {
+        let src_name = $(this).prop('name');
+        $('#img').css({width: 'unset', height: 'unset'});
         let target_id = $(this).data('target');
-        let target = $('#'+target_id);
-        $('#'+target_id+'_no_image').hide();
-        window._cropper[target_id] = new Cropper(document.getElementById(target_id),
-        {
-            aspectRatio : getItem('aspectRatio')
-        });
+        let target = $('#' + target_id);
         if (this.files && this.files[0]) {
             if (this.files[0].type.match(/^image\//)) {
                 var reader = new FileReader();
+                let ratio = numeral(getItem('aspectRatio')).value();
+                if (!window._cropper[src_name]) window._cropper[src_name] = {};
+                window._cropper[src_name].img = {};
                 reader.onload = function (e) {
+                    /**Set image to config */
+                    let img = new Image();
+                    img.onload = function () {
+                        window._cropper[src_name].img.originalWidth = img.width;
+                        window._cropper[src_name].img.originalHeight = img.height;
+                    }
+                    img.src = e.target.result;
                     target.attr('src', e.target.result);
+                    /**check create cropper */
+                    if (window._cropper[src_name] && window._cropper[src_name].cropper != undefined) {
+                        window._cropper[src_name].cropper.destroy();
+                        window._cropper[src_name].cropper = null;
+                        delete window._cropper[src_name].img.crop;
+
+                    }
+                    $('#' + target_id).Jcrop({
+                        bgColor: 'white',
+                        bgFade: true,
+                        bgOpacity: .4,
+                        onSelect: function (c) {
+                            window._cropper[src_name].info = $.extend({}, c);
+                        },
+                        onRelease : function(c){
+                            delete window._cropper[src_name].img.crop;
+                        },
+                        aspectRatio: ratio,
+                        allowSelect: true,
+                        allowMove: true,
+                        allowResize: false
+                    }, function () {
+                        // window._cropper[src_name].crop = this;
+                        window._cropper[src_name].ratio = getItem('ratioText')
+                        window._cropper[src_name].img.width = target.width();
+                        window._cropper[src_name].img.height = target.height();
+                        window._cropper[src_name].cropper = this;
+                    });
                 }
                 reader.readAsDataURL(this.files[0]);
+            }
+        }else{
+            if(window._cropper && window._cropper[src_name] && window._cropper[src_name].cropper){
+                window._cropper[src_name].cropper.destroy();
+                window._cropper[src_name].cropper = null;
             }
         }
     });
 
-    $('input[data-image="preview"]').each(function(){
-        let target_id = $(this).data('target');
-        $(this).after(`<span type="button" class="btn btn-default input-group-addon btnCropPopover" data-toggle="modal" data-target="#${target_id}_modal">Cắt ảnh</span>
-        <div class="modal fade in" id="${target_id}_modal" role="dialog" style="display: none; padding-right: 16px;">
-            <div class="modal-dialog modal-large">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <h2>Cắt ảnh</h2>
-                        <div id="${target_id}_no_image">Chưa chọn hình</div>
-                        <canvas id="${target_id}_canvas"></canvas>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cắt</button>
-                        <button type="button" class="btn btn-default bg-white" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `);
-        $(this).parent().addClass('input-group').css({padding: '0px 15px', 'margin-bottom': '15px'});
-    });
-
-    $(document).unbind('click', '.btnCropPopover').on('click', '.btnPreviewPopover', function(){
+    $(document).unbind('click', '.btnCropPopover').on('click', '.btnPreviewPopover', function () {
         let target_id = $(this).data('pop');
         $(`.popover[data-pop="${target_id}"]`).show();
     });
@@ -84,7 +98,7 @@ $(function () {
                     $($this).closest('.item-root').remove();
                 },
                 204: function () {
-                    notifyCustomer('Đã xảy ra lỗi. Xóa ' + objectDisplay[_object] + 'không thành công', false);
+                    notifyCustomer('Đã xảy ra lỗi. Xóa ' + objectDisplay[_object] + ' không thành công', false);
                 },
                 404: function () {
                     notifyCustomer('Đã có lỗi xảy ra. Vui lòng thực hiện sau', false);
@@ -98,10 +112,6 @@ $(function () {
 
             }
         })
-    });
-
-    $('.cake-item img').each(function () {
-        $(this).css({ 'max-height': this.width / 2, 'overflow': 'hidden' });
     });
 
 
@@ -133,14 +143,14 @@ function slug(string) {
     return sb.toString();
 }
 
-var setItem = function(key, value){
+var setItem = function (key, value) {
     localStorage.setItem(btoa(key), btoa(value));
 }
 
-var getItem = function(key){
-    if(localStorage.getItem(btoa(key))){
+var getItem = function (key) {
+    if (localStorage.getItem(btoa(key))) {
         return atob(localStorage.getItem(btoa(key)))
-    }else{
+    } else {
         return null;
     }
 }

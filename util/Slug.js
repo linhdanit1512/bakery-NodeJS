@@ -4,7 +4,7 @@ module.exports = exports = class Slug {
 
     slug(string) {
         var sb = ''
-        var chs = string.toLowerCase().toCharArray();
+        var chs = string.toLowerCase().split('');
         chs.forEach(function (c) {
             if (c == 'á' || c == 'à' || c == 'ả' || c == 'ã' || c == 'ạ' || c == 'ă' || c == 'ắ' || c == 'ằ' || c == 'ẳ' || c == 'ẵ' || c == 'ặ' || c == 'â' || c == 'ấ' || c == 'ầ' || c == 'ẩ' || c == 'ẫ' || c == 'ậ')
                 sb += 'a';

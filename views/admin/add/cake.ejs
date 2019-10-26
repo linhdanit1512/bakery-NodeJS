@@ -1,82 +1,212 @@
-<%- include('./partials/header-admin', {
+<%
+var isUpdate = locals.cake ? locals.cake : false;
+let options = {
     title : 'Thêm bánh mới',
     under_title : '<i id="cake-slug">&nbsp;</i>'
-}); %>
+}
+let slug = '';
+if(isUpdate){
+    options.other = '<a href="'+process.env.HOST+'admin/cake" class="btn btn-lg btn-success notika-btn-success btn-icon-notika waves-effect"><i class="notika-icon notika-app"></i> Thêm bánh mới</a>';
+    options.title="Cập nhật bánh";
+    slug = cake.slug.split('-');
+    if(slug.length>0) slug.pop();
+    slug = slug.join('-')
+    options.under_title = '<i id="cake-slug">'+slug+'</i>';
+}
+%>
+<%- include('./partials/header-admin', options); %>
+
 
 <div class="container page-body">
     <div>
         <form class="form" id="cakeForm" action="" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_id">
-            <input type="hidden" name="slug">
+            <input type="hidden" name="_id" value="<%-isUpdate ? cake._id : '' %>">
+            <input type="hidden" name="slug" value="<%-isUpdate ? cake.slug : '' %>">
             <div class="col-md-8 col-xs-12">
                 <div class="col col-lg-6 col-md-6 col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <input name="name" class="form-control" placeholder="Tên bánh" required>
+                    <input name="name" class="form-control" value="<%-isUpdate ? cake.name : '' %>"
+                        placeholder="Tên bánh" required>
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <input type="file" name="img" form="image-form" accept="image/*" data-image="preview"
-                        data-target="previewCake" class="form-control" placeholder="Hình ảnh">
+                    <input type="file" name="img" accept="image/*" data-image="preview" data-target="img"
+                        class="form-control" placeholder="Hình ảnh">
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <textarea name="description" rows="6" class="form-control" placeholder="Giới thiệu bánh"></textarea>
+                    <textarea name="description" rows="6" class="form-control"
+                        placeholder="Giới thiệu bánh"><%-isUpdate ? cake.description : '' %></textarea>
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <input type="number" name="expiry_date" class="form-control" placeholder="Hạn sử dụng (ngày)"
-                        required>
+                    <input type="number" name="expiry_date" value="<%-isUpdate ? cake.expiry_date : '' %>"
+                        class="form-control" placeholder="Hạn sử dụng (ngày)" required>
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <input name="price" class="form-control input-currency" placeholder="Giá bán" required>
+                    <input name="price" class="form-control input-currency" value="<%-isUpdate ? ''+ cake.price : '' %>"
+                        placeholder="Giá bán" required>
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <input name="cake_type" class="form-control" placeholder="Loại bánh">
+                    <input name="cake_type" class="form-control" value="<%-isUpdate ? cake.cake_type : '' %>"
+                        placeholder="Loại bánh">
                 </div>
             </div>
-            <div class="col-md-4 col-xs-12" style="padding: 0px;"><img id="previewCake"></div>
+            <div class="col-md-4 col-xs-12" style="padding: 0px;"><img id="img"
+                    <%-isUpdate ? ' src="' + process.env.HOST + 'img/cake/' + cake.img + '"' : '' %>></div>
             <div class="clearfix padding-10"></div>
             <div class="form-submits pull-right">
-                <button class="btn btn-success notika-btn-success btnSubmitCake" type="button">Thêm</button>
-                <button class="btn btn-default" type="reset">Nhập lại</button>
+                <button class="btn btn-success notika-btn-success btnSubmitCake" type="submit">Thêm</button>
+                <button class="btn btn-default btnResetCake" type="reset">Nhập lại</button>
                 <button class="btn btn-default" type="button">Hủy</button>
             </div>
         </form>
-        <form id="image-form"></form>
     </div>
 </div>
 <% include partials/footer-admin %>
+<% if(isUpdate){ %>
 <script>
-    setItem('aspectRatio', 4 / 3);
+    var cakeImage = '';
+    var imageDefault = {}
+    function setDefaultCakeImage() {
+        let _img = new Image();
+        let img = $('#img');
+        _img.src = img.attr('src');
+        _img.onload = function (e) {
+            window._cropper = { img: { img: { ratio: '1x1' } } };
+            window._cropper.img.img.originalWidth = _img.width;
+            window._cropper.img.img.originalHeight = _img.height;
+            var canvas = document.createElement("canvas");
+            canvas.width = _img.width;
+            canvas.height = _img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(_img, 0, 0);
+            var dataURL = canvas.toDataURL("image/<%= cake.img.split('.').pop() %>");
+            cakeImage = dataURL;
+            let jcrop_options = {
+                bgColor: 'white',
+                bgFade: true,
+                bgOpacity: .4,
+                aspectRatio: 1,
+                allowSelect: true,
+                allowMove: true,
+                allowResize: false
+            }
+            if(imageDefault.img){
+                jcrop_options.boxWidth = imageDefault.img.width;
+                jcrop_options.boxHeight = imageDefault.img.height;
+            }
+            img.Jcrop(jcrop_options, function () {
+                window._cropper.img.ratio = getItem('ratioText');
+                window._cropper.img.img.width = img.width();
+                window._cropper.img.img.height = img.height();
+                window._cropper.img.cropper = this;
+                if (!imageDefault.img) {
+                    imageDefault = $.extend({}, window._cropper.img);
+                }
+            });
+        };
+    }
+    setDefaultCakeImage();
+</script>
+<% } %>
+<script>
+    <% if (locals.message && locals.message != '') { %><%- `notifyCustomer('${locals.message}', false);` %><% }%>
+    setItem('aspectRatio',  1);
+    setItem('ratioText', '1x1');
     $('[name=name]').change(function () {
-        var _slug = slug(this.value);
-        var lasted_slug = Math.floor(Math.random() * 1e9);
-        $('[name=slug]').val(_slug + '-' + lasted_slug);
-        $('#cake-slug').text('/' + _slug);
+        if (this.value != '') {
+            var _slug = slug(this.value);
+            var lasted_slug = Math.floor(Math.random() * 1e9);
+            $('[name=slug]').val(_slug + '-' + lasted_slug);
+            $('#cake-slug').text('/' + _slug);
+        } else {
+            $('#cake-slug').text('');
+        }
     });
 
-    $('.btnSubmitCake').click(function () {
-
-        // Get form
-        var form = $('#cakeForm')[0];
-
-        // Create an FormData object 
-        var data = new FormData(form);
-        $.ajax({
-            url: '<%=process.env.HOST%>admin/cake',
-            type: 'post',
-            processData: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            dataType: 'json',
-            data: data,
-            success: function (res) {
-                if (res.error) {
-                    notifyCustomer('Đã có lỗi xảy ra, vui lòng thực hiện lại', false);
-                } else {
-                    $('#cakeForm')[0].reset();
-                    notifyCustomer('Đã thêm bánh thành công', true);
-                }
-            },
-            error: function (e) {
-                notifyCustomer('Đã có lỗi xảy ra, vui lòng thực hiện lại', false);
+    function resetCake() {
+        $('#cake-slug').text('<%- slug %>');
+        <% if (isUpdate) { %>
+            $("#img").attr("src", cakeImage);
+            $('#img').css({ width: imageDefault.img.width, height: imageDefault.img.height });
+            if (window._cropper.img && window._cropper.img.cropper != undefined) {
+                window._cropper.img.cropper.destroy();
+                window._cropper.img.cropper = null;
+                delete window._cropper.img.img.crop;
             }
-        });
+            setDefaultCakeImage();
+            $('.jcrop-holder img').attr('src', cakeImage);
+            $('.jcrop-holder img, .jcrop-holder, .jcrop-tracker').css({ width: imageDefault.img.width, height: imageDefault.img.height });
+        <% } else { %>
+            $('#img').css({ display: 'none' });
+        <% } %>
+            $('#cakeForm').trigger('reset');
+    }
+
+    $('button.btnResetCake').click(function () {
+        resetCake();
+    });
+
+    var cake_types = <%- locals.cakeType ? JSON.stringify(locals.cakeType.join(',').split(',')) : '[]' %>;
+
+    $('#cakeForm [name=cake_type]').tagsInput({
+        interactive: true,
+        placeholder: '+ Tag',
+        width: 'auto',
+        height: 'auto',
+        hide: true,
+        removeWithBackspace: true,
+        autocomplete: {
+            source: function (req, res) {
+                res(cake_types.filter(elem => elem.toLowerCase().includes(req.term.toLowerCase())));
+            }
+        },
+        delimiter: [',', ';', '.', '$', '@', '#', '^'],
+    });
+
+    $('#cakeForm').validate({
+        rules: {
+            name: { required: true },
+            expiry_date: { required: true },
+            price: { required: true, number: true }
+        },
+        messages: {
+            name: { required: 'Vui lòng nhập tên bánh' },
+            expiry_date: { required: 'Vui lòng nhập thời gian sử dụng (ngày)' },
+            price: { required: 'Vui lòng nhập giá bánh', number: 'Giá tiền phải là số' }
+        },
+        submitHandler: function () {
+            // Get form
+            var form = $('#cakeForm')[0];
+
+            // Create an FormData object 
+            var data = new FormData(form);
+            if (window._cropper && $('[name=img]').get(0).files.length > 0) {
+                if (window._cropper.img.cropper) {
+                    window._cropper.img.cropper.destroy();
+                    window._cropper.img.cropper = null;
+                }
+                data.append('cropper', JSON.stringify(window._cropper));
+            }
+            $.ajax({
+                url: '<%=process.env.HOST%>admin/cake',
+                type: 'post',
+                processData: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                dataType: 'json',
+                data: data,
+                success: function (res) {
+                    if (res.error) {
+                        notifyCustomer(res.message, false);
+                    } else {
+                        $('#cake-slug').text('');
+                        $('#cakeForm [name=cake_type]').removeTag($('#cakeForm [name=cake_type]').val());
+                        $('#cakeForm').trigger('reset');
+                        notifyCustomer(res.alert, true);
+                    }
+                },
+                error: function (e) {
+                    notifyCustomer('Đã có lỗi xảy ra, vui lòng thực hiện lại', false);
+                }
+            });
+        }
     })
 </script>

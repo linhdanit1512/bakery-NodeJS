@@ -47,24 +47,29 @@
 	</div>
 </footer>
 
-<script src="<%=process.env.HOST%>theme/js/vendor/jquery-1.12.4.min.js"></script>
-<!-- bootstrap JS
-	============================================ -->
+<script src="<%=process.env.HOST%>dist/js/jquery.min.js"></script>
+<script src="<%=process.env.HOST%>dist/js/jquery-ui.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/bootstrap.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/notification/bootstrap-growl.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/notification/notification-active.js"></script>
 <!-- Image crop -->
-<script src="<%=process.env.HOST%>dist/plugins/jcrop/jquery.color.min.js"></script>
-<script src="<%=process.env.HOST%>dist/plugins/jcrop/jquery.jCrop.min.js"></script>
+<script src="<%=process.env.HOST%>dist/plugins/Jcrop/js/jquery.Jcrop.min.js"></script>
+<script src="<%=process.env.HOST%>dist/js/plugins/jquery-validate/jquery.validate.min.js"></script>
+
+
+<script src="<%=process.env.HOST%>dist/js/plugins/bloodhound/bloodhound.js"></script>
+<script src="<%=process.env.HOST%>dist/js/plugins/typeahead/typeahead.min.js"></script>
+<script src="<%=process.env.HOST%>dist/js/numeral.min.js"></script>
+<script src="<%=process.env.HOST%>dist/js/plugins/tags-input-autocomplete/src/jquery.tagsinput-revisited.js"></script>
 <!-- wow JS
 	============================================ -->
 <script src="<%=process.env.HOST%>theme/js/wow.min.js"></script>
 <script src="<%=process.env.HOST%>theme/js/owl.carousel.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script> -->
 <script>
 	const host = "<%=process.env.HOST%>";
 	$('#phone').click(function(){
 		window.location.href = 'tel:+84'+numeral(this.innerHTML ).value();
 	});
 </script>
-<script type="module" src="<%=process.env.HOST%>dist/js/admin.js"></script>
+<script src="<%=process.env.HOST%>dist/js/admin.js"></script>

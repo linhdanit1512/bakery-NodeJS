@@ -1,15 +1,23 @@
-.page-body{
-    min-height: 333px;
+:root {
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --success: #28a745;
+    --dark: #353535;
 }
 
-footer.footer{
-    background: #00c292;
+.page-body {
+    min-height: 343px;
+}
+
+footer.footer {
+    background: var(--current-theme-color);
     color: white;
     bottom: 0;
     width: 100%;
     padding: 0.5em 1em;
     height: fit-content;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .form-submit {
@@ -29,12 +37,94 @@ footer.footer{
     border: unset;
 }
 
+.bg-theme, .tooltip-arrow, .tooltip-inner {
+    background: var(--current-theme-color);
+    color: var(--current-theme-text);
+}
+
+.tooltips-ctn h4, .tooltips-static h4, .popovers-sgn h4, .popover-cl-pro .popover .popover-title {
+    font-size: 16px;
+    color: #333;
+}
+
+.tooltip-inner {
+    padding: 5px 15px;
+    background: var(--current-theme-color);
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: var(--current-theme-color);
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: var(--current-theme-color);
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: var(--current-theme-color);
+}
+
+.tooltip.left .tooltip-arrow {
+    border-left-color: var(--current-theme-color);
+}
+
+.tooltip.in {
+    opacity: 1;
+}
+
+.tooltips-static .btn-primary, .popover-cl-pro .btn-primary {
+    font-size: 14px;
+    background: var(--current-theme-color);
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    margin-right: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+.tooltips-static .btn-primary:hover, .tooltips-static .btn-primary:focus, .tooltips-static .btn-primary:active, .popover-cl-pro .btn-primary:hover, .popover-cl-pro .btn-primary:focus, .popover-cl-pro .btn-primary:active {
+    background: var(--current-theme-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+    outline: none;
+}
+
+.tooltips-static p, .tooltips-ctn p {
+    margin-bottom: 0px;
+}
+
+.tooltips-static, .tooltips-ctn, .stc-tlt-hd {
+    margin-bottom: 20px;
+}
+
+.tooltips-static.tooltips-cvn {
+    margin-bottom: 0px;
+}
+
+.tooltips-hd.tooltips-hdn p {
+    margin-bottom: 0px;
+}
+
+.tooltips-hd.tooltips-hdn {
+    margin-bottom: 20px;
+}
+
+.bakery-menu {
+    background: var(--current-theme-text);
+    color: var(--current-theme-color);
+}
+
+.error {
+    color: var(--danger);
+    font-weight: lighter;
+}
+
 ul.dropdown-menu>li>a {
     padding: 10px 20px;
 }
 
 ul.dropdown-menu>li>a:hover, ul.dropdown-menu>li>a:focus, ul.dropdown-menu>li.active>a {
-    background: #00c292;
+    background: var(--current-theme-color);
 }
 
 .custom-bg-attr {
@@ -51,7 +141,7 @@ ul.dropdown-menu>li>a:hover, ul.dropdown-menu>li>a:focus, ul.dropdown-menu>li.ac
     cursor: pointer;
 }
 
-.custom-bg-attr:hover{
+.custom-bg-attr:hover {
     background: rgba(var(--GG900-rgb), .1);
 }
 
@@ -59,10 +149,15 @@ ul.dropdown-menu>li>a:hover, ul.dropdown-menu>li>a:focus, ul.dropdown-menu>li.ac
     cursor: pointer;
 }
 
+ul.notika-menu-wrap li a {
+    padding: 10px 15px;
+}
+
 /**--------------CAKE---------------------- */
+
 .cake-item {
     padding: 3px;
-    border: 1px solid #00c292;
+    border: 1px solid var(--current-theme-color);
     margin: 5px;
     background: white;
 }
@@ -73,3 +168,95 @@ ul.dropdown-menu>li>a:hover, ul.dropdown-menu>li>a:focus, ul.dropdown-menu>li.ac
 }
 
 /**----END CAKE */
+
+.jcrop-holder img {
+    max-width: unset !important;
+}
+
+/** TAGSINPUT */
+
+.tagsinput {
+    border-radius: 0px;
+}
+
+.tagsinput .tag {
+    background: var(--current-theme-color);
+    color: var(--current-theme-text);
+}
+
+.ui-autocomplete {
+    background: white;
+    color: var(--dark);
+    padding: 0px 5px;
+}
+
+div.tagsinput {
+    margin-top: 15px;
+}
+
+/*----------------------------------------*/
+
+/*  57. Breadcomb CSS
+/*----------------------------------------*/
+
+.breadcomb-area {
+    margin-bottom: 30px;
+}
+
+.breadcomb-wp {
+    display: flex;
+}
+
+.breadcomb-icon i {
+    font-size: 20px;
+    color: #00c292;
+    padding: 15px;
+    position: relative;
+    border-radius: 50%;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    display: block;
+}
+
+.breadcomb-list {
+    padding: 20px 20px;
+    background: #fff;
+}
+
+.breadcomb-ctn {
+    margin-left: 20px;
+}
+
+.breadcomb-ctn h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.breadcomb-ctn p {
+    font-size: 14px;
+    color: #333;
+    margin: 0px;
+}
+
+.breadcomb-report {
+    margin: 8px 0px;
+    text-align: right;
+}
+
+.breadcomb-report .btn {
+    background: #00c292;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+.breadcomb-report .btn:focus, .breadcomb-report .btn:active, .breadcomb-report .btn:hover {
+    background: #00c292;
+    box-shadow: none;
+    outline: none;
+}
+
+#sidebar.active .sidebar-nav ul.metismenu li ul.submenu-angle.layout-mini-tl {
+    top: -322px;
+}

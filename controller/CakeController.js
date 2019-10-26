@@ -66,38 +66,32 @@ CakeController._insert = function (data, callback) {
     if (!['Valid', 'Stop', 'Sold'].includes(data.status)) {
         data.status = 'Valid';
     }
-
-    if (data.img) {
-        new UploadFile(data.img, 'cake', function (img) {
-            if (!img) {
-                delete data.img;
-            } else {
-                data.img = img;
-            }
-            _cake.save(function (error, data) {
-                callback(error, data);
-            });
-        });
-    }
-
+    _cake.save(function (error, data) {
+        callback(error, data);
+    });
 }
+
+CakeController.getCakeTypes = function(){
+    return new Promise((resolve, reject)=>{
+        CakeController.find({}).select('+cake_type').sort({cake_type: 'asc'}).distinct('cake_type', (error, data)=>{
+            if(error){
+                reject(error);
+            }else{
+                resolve(data);
+            }
+        })
+    })
+}
+
 CakeController._update = function (data, callback) {
     if (!data.slug) {
         data.slug = new Slug().slug(data.name);
     }
 
-    if (data.img) {
-        new UploadFile(data.img, 'cake', function (img) {
-            if (!img) {
-                delete data.img;
-            } else {
-                data.img = img;
-            }
-            CakeController.update({ id: new mongoose.Types.ObjectId(data.id) }, { $set: data }).exec(function (error, result) {
-                if (callback) callback(error, result);
-            });
-        });
-    }
+    CakeController.update({ id: new mongoose.Types.ObjectId(data.id) }, { $set: data }).exec(function (error, result) {
+        if (callback) callback(error, result);
+    });
+
 }
 
 module.exports = exports = CakeController;

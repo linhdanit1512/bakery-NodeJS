@@ -1,0 +1,35 @@
+{
+    "notify_text": {
+        "permission": "Không có quyền truy cập hay trang không tồn tại",
+        "cake": {
+            "maxFileSize": 10485760,
+            "success": "Đã thêm bánh thành công",
+            "error": {
+                "big_size": "Tệp có kích thước quá lớn, vui lòng chọn tệp có kích thước tối đa 10MB",
+                "image_file": "Tệp đã chọn phải là ảnh",
+                "insert": "Đã có lỗi xảy ra. Chúng tôi sẽ kiểm tra lại.",
+                "update": "Đã có lỗi xảy ra. Chúng tôi sẽ kiểm tra lại.",
+                "error" : "Đã có lỗi xảy ra. Chúng tôi sẽ kiểm tra lại.",
+                "cake_type": "Đã có lỗi xảy ra. Chúng tôi sẽ kiểm tra lại."
+            }
+        }
+    },
+    "default_page": {
+        "user": "",
+        "admin": "admin"
+    },
+    "dimension" : {
+        "cake" : {
+            "ratio" : 1,
+            "ratioText" : "1x1"
+        },
+        "user" : {
+            "ratio" : 1,
+            "ratioText" : "1x1"
+        },
+        "product" : {
+            "ratio" : 1.33333333,
+            "ratioText" : "4x3"
+        }
+    }
+}

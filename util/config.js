@@ -10,11 +10,8 @@ var options = {
 }
 
 var database = mongoose.createConnection(process.env.DB_HOST, options);
-function stringConvert(st) {
-
-}
 module.exports = exports = {
     database: database,
-    collection_name: ['Cake', 'CakeMaking', 'CakeSelling', 'Ingredient', 'UsedIngredient', 'Timekeeping'],
-
+    collection_name: ['Cake', 'CakeMaking', 'CakeSelling', 'Ingredient', 'UsedIngredient', 'Timekeeping']
+    
 }

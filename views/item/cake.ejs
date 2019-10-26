@@ -1,7 +1,7 @@
 <div class="padding-5 col10-2 col-md-3 col-sm-4 col-xs-6 item-root">
     <div class="cake-item">
         <a class="img-cake-item" href="<%= process.env.HOST+ 'admin/cake/'+ cake.slug %>">
-            <img src="<%= process.env.HOST+ 'img/cake/'+ cake.img %>" alt="Cake Image" style="width:100%">
+            <img src="<%= process.env.HOST+ 'img/cake/'+ (cake.img && cake.img!='undefined/' && cake.img!= undefined ? cake.img : 'no-image.png') %>" alt="Cake Image" style="width:100%">
             <figcaption><%= cake.name %></figcaption>
             <div class="text-warning cake-price"><%= ""+cake.price %></div>
             <% if(isAdmin==true){ %>
